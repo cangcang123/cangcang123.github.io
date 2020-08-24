@@ -1,0 +1,68 @@
+{% extends "pages/base.html" %}
+{% block title %} trang chủ {% endblock %}
+{% block content %}
+   <!-- Women Banner Section Begin -->
+   {% load static %}
+    <section class="women-banner spad">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="product-large set-bg" data-setbg="{% static 'img/products/dt1.jpg' %}">
+                        <h2>Điện Thoại</h2>
+                        <a href=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-8 offset-lg-1">
+                    
+                    <div class="product-slider owl-carousel">
+                        
+                        <div class="product-item">
+                            <div class="pi-pic">
+                             {% for data in Data %} <!-- thằng Data ở đây chính là thằng Data ở views-->
+                                <img src="{{data.image.url}}" alt="">
+                                 
+                                <div class="pi-text">
+                                <a href="/pages/{{data.id}}">
+                                    <h5>{{data.name}}</h5>
+                                </a>
+                                <div class="product-price">
+                                    {{data.price}}
+                        
+                                </div>
+                                
+                            </div>
+                            </div>     
+                        </div>
+                        <div class="product-item">
+                            <div class="pi-pic">
+                             
+                                <img src="{{data.image.url}}" alt="">
+                                <div class="pi-text">
+                                <a href="#">
+                                    <h5>{{data.name}}</h5>
+                                </a>
+                                <div class="product-price">
+                                    {{data.price}}
+                        {% endfor %}
+                                </div>
+                                
+                            </div>
+                            </div>     
+                        </div>
+                    </div>
+                {% if page_obj.has_next %} 
+                 <a href="{{request.path}}?page={{page_obj.next_page_number}}">tiếp theo </a>
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Women Banner Section End -->
+
+    <!-- Deal Of The Week Section Begin-->
+    
+    <!-- Deal Of The Week Section End -->
+
+    <!-- Man Banner Section Begin -->
+
+{% endblock %}

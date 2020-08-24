@@ -1,0 +1,80 @@
+{% extends "pages/base.html" %}
+{% block title %} sản phẩm giỏ hàng {% endblock %}
+{% block content %}
+<!-- Shopping Cart Section Begin -->
+{% load static %}
+{% load mathfilters %}
+    <section method="POST" class="shopping-cart spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="cart-table">
+                        <table>
+                        <form action="" method="POST">
+                            <thead>
+                                <tr>
+                                    
+                                    <th>Image</th>
+                                    <th class="p-name">Product Name</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                
+                                <tr> {% for key,value in request.session.cart.items %}
+                                    <td class="cart-pic first-row"><img src="{% static 'img/'%}{{value.img}}" alt=""></td>
+                                    <td class="cart-title first-row">
+                                        <h5>{{value.name}}</h5>
+                                    </td>
+                                    <td class="p-price first-row">{{value.price}}</td>
+                                    <td class="qua-col first-row">
+                                        <div class="quantity">
+                                            <div class="pro-qty">
+                                                <input type="text" value="{{value.num}}">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="total-price first-row">{{value.price|mul:value.num}}</td>
+                                    <td class="close-td first-row"><a href="#">xóa</a></td>
+                                </tr>
+                               {% endfor %}
+                            </tbody>
+                        </form>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="cart-buttons">
+                                <a href="#" class="primary-btn continue-shop">Continue shopping</a>
+                                <a href="#" class="primary-btn up-cart">Update cart</a>
+                            </div>
+                           
+                            <div class="discount-coupon">
+                                <h6>Giỏ hàng của : {{value.user}}</h6>
+                                <form action="#" class="coupon-form">
+                                    <input type="text" placeholder="Enter your codes">
+                                    <button type="submit" class="site-btn coupon-btn">Apply</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 offset-lg-4">
+                            <div class="proceed-checkout">
+                                <ul>
+                                    <li class="subtotal">Subtotal <span></span></li>
+                                    <li class="cart-total">Total <span>{{total}}</span></li>
+                                </ul>
+                                <a href="{% url 'luugh'%}" class="proceed-btn">Gửi Đơn Hàng</a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Shopping Cart Section End -->
+    {% endblock %}

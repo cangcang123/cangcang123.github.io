@@ -1,0 +1,62 @@
+{% extends "pages/base.html" %}
+{% block title %} trang chủ {% endblock %}
+{% block content %}
+   <!-- Women Banner Section Begin -->
+   {% load static %}
+    <!-- Breadcrumb Section Begin -->
+    <div class="breacrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text">
+                        <a href="#"><i class="fa fa-home"></i> Home</a>
+                        <span>Register</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb Form Section Begin -->
+
+    <!-- Register Section Begin -->
+    <div class="register-login-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="register-form">
+                        <h2>Register</h2>
+                        <form action="."  method='POST'>
+                        {% csrf_token %}
+                        {{form.errors}} 
+                            <div class="group-input">
+                                <label for="username">Username*</label>
+                                {{form.username}}
+                            </div>
+                            <div class="group-input">
+                                <label for="email">email*</label>
+                                {{form.email}}
+                            </div>
+                            <div class="group-input">
+                                <label for="pass">Password *</label>
+                                {{form.password1}}
+                            </div>
+                            <div class="group-input">
+                                <label for="con-pass">Confirm Password *</label>
+                                {{form.password2}}
+                            </div>
+                            <input type="submit" class="site-btn register-btn" value="Đăng kí"/>
+                        </form>
+                        
+                        <div class="switch-login">
+                            <a href="{% url 'login'%}" class="or-login">Or Login</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Register Form Section End -->  
+</body>
+
+</html>
+{% endblock %}

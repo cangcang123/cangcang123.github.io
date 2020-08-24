@@ -1,0 +1,7 @@
+tạo 1 folder django
+python manage.py startapp tên
+
+tạo model
+python manage.py makemigrations tên database
+cập nhật database
+python manage.py migrate
